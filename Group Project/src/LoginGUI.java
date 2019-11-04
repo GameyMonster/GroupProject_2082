@@ -80,7 +80,7 @@ public class LoginGUI {
 			// If user didn't have account it will create one
 			public void actionPerformed(ActionEvent e) {
 			// Open the JFrame of the Account GUI
-			Account frame = new Account();
+			AccountGUI frame = new AccountGUI();
 			frame.setVisible(true);	
 			}
 		});
