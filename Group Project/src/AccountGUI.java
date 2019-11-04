@@ -13,7 +13,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Account extends JFrame {
+public class AccountGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtFName;
@@ -41,7 +41,7 @@ public class Account extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Account frame = new Account();
+					AccountGUI frame = new AccountGUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,7 +53,7 @@ public class Account extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Account() {
+	public AccountGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
