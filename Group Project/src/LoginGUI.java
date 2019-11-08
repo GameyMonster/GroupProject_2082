@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -75,6 +77,23 @@ public class LoginGUI {
 		frame.getContentPane().add(lblPassword);
 		
 		JButton btnSignIn = new JButton("Sign In");
+		btnSignIn.addActionListener(new ActionListener() {
+			// If the User Match the Username and password it
+			// will login the main screen
+			public void actionPerformed(ActionEvent arg0) {
+				String user = txtUser.getText();
+				String password = passwordField.getText();
+				//User Name and Password has been Save Here
+				if(user.equals(txtUser) && password.equals(passwordField)) {
+					//Display if Password and Login are Match
+					JOptionPane.showMessageDialog(frame,"Sucessfully Login!");
+				}
+				else {
+					//Display if Password or Password didn't Match
+					JOptionPane.showMessageDialog(frame,"Invalid Username or Password");
+				}
+			}
+		});
 		btnSignIn.setBounds(52, 190, 135, 23);
 		frame.getContentPane().add(btnSignIn);
 		
