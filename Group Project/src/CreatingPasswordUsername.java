@@ -1,9 +1,8 @@
-package FinalProject;
 
 import java.util.Scanner;
 
 public class CreatingPasswordUsername {
-	String password,username,backWordName = "";
+	String password,username,backWordName = null;
 	int lengthPassword;
 	Scanner input = new Scanner(System.in);
 	

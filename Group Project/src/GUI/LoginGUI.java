@@ -1,3 +1,4 @@
+package GUI;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,6 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

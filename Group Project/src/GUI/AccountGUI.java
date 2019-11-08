@@ -1,3 +1,5 @@
+package GUI;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -42,6 +44,7 @@ public class AccountGUI extends JFrame {
 			public void run() {
 				try {
 					AccountGUI frame = new AccountGUI();
+					
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -153,7 +156,8 @@ public class AccountGUI extends JFrame {
 		btnConfirm.addActionListener(new ActionListener() {
 			//Save the info data
 			public void actionPerformed(ActionEvent e) {
-			
+				//If the User press the button it 
+				//will save their info for the MainGUI
 				
 				
 			}
