@@ -80,7 +80,7 @@ public class LoginGUI {
 			// will login the main screen
 			public void actionPerformed(ActionEvent arg0) {
 				String user = txtUser.getText().trim();
-				char[] password = passwordField.getPassword();
+				char [] password = passwordField.getPassword();
 				
 				//User Name and Password has been Save Here
 				if(user.equals(txtUser) && password.equals(passwordField)) {
