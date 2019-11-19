@@ -54,7 +54,7 @@ public class LoginGUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		frame = new JFrame("Login");
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -79,8 +79,9 @@ public class LoginGUI {
 			// If the User Match the Username and password it
 			// will login the main screen
 			public void actionPerformed(ActionEvent arg0) {
-				String user = txtUser.getText();
-				String password = passwordField.getText();
+				String user = txtUser.getText().trim();
+				char[] password = passwordField.getPassword();
+				
 				//User Name and Password has been Save Here
 				if(user.equals(txtUser) && password.equals(passwordField)) {
 					//Display if Password and Login are Match
@@ -101,7 +102,7 @@ public class LoginGUI {
 			public void actionPerformed(ActionEvent e) {
 			// Open the JFrame of the Account GUI
 			AccountGUI frame = new AccountGUI();
-			frame.setVisible(true);	
+			frame.show();	
 			}
 		});
 		btnCreateAccount.setBounds(222, 190, 135, 23);

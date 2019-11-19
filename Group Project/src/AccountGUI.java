@@ -1,16 +1,19 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Window;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
 import java.awt.event.ActionEvent;
 
 public class AccountGUI extends JFrame {
@@ -154,11 +157,27 @@ public class AccountGUI extends JFrame {
 		btnConfirm.addActionListener(new ActionListener() {
 			//Save the info data
 			public void actionPerformed(ActionEvent e) {
-				//If the User press the button it 
-				//will save their info for the MainGUI
+				String userName = txtUser.getText().toString();
+				char[] password = passwordField.getPassword();
 				
+				try {
+					FileWriter writer = new FileWriter("Student.txt", true);
+					//Save the UserName
+					writer.write(userName);
+					writer.write(System.getProperty("line.separator"));
+					//Save the password
+					writer.write(password);
+					writer.write(System.getProperty("line.separator"));
+					writer.close();
+				//Display message if the account is created
+					JOptionPane.showMessageDialog(rootPane, "Account Is Created!");
+				} catch (Exception e1) {
+					//Display message if account is incomplete
+					JOptionPane.showMessageDialog(rootPane, "Error?!");
+				}
 				
 			}
+			
 		});
 		btnConfirm.setBounds(157, 214, 89, 23);
 		contentPane.add(btnConfirm);
