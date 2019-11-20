@@ -135,7 +135,6 @@ public class LoginGUI {
 				} catch (IOException d) {
 					d.printStackTrace();
 				}
-
 			}
 		});
 		btnSignIn.setBounds(52, 190, 135, 23);
