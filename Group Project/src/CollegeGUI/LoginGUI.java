@@ -1,3 +1,4 @@
+package CollegeGUI;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -10,6 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
@@ -77,7 +79,7 @@ public class LoginGUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame("Login Form");
+		frame = new JFrame("Student Login Form");
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -103,7 +105,7 @@ public class LoginGUI {
 				try {
 					File file = new File("Student.txt");
 					Scanner scan = new Scanner(file);
-					;
+					
 					String line = null;
 					FileWriter filewrite = new FileWriter(file, true);
 
