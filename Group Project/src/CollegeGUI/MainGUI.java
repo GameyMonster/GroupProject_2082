@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -19,6 +20,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainGUI extends JFrame {
 	private JTextField txtCourseName;
@@ -64,7 +67,6 @@ public class MainGUI extends JFrame {
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"", "", null, null, null, null},
 			},
 			new String[] {
 				"Course Name", "Course ID", "Instructor Name", "Credits", "Days", "Time"
@@ -143,15 +145,66 @@ public class MainGUI extends JFrame {
 		TimeBox.setBounds(170, 315, 103, 18);
 		getContentPane().add(TimeBox);
 		
+		// Student can add courses/record to the JTable
 		JButton btnAddCourse = new JButton("Add Course");
+		btnAddCourse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//Call the JTable to add the courses
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
+				model.addRow(new Object[] {
+						txtCourseName.getText(),
+						txtCourseId.getText(),
+						txtInstructor.getText(),
+						CreditBox.getSelectedItem(),
+						DaysBox.getSelectedItem(),
+						TimeBox.getSelectedItem(),
+						
+				});
+				
+				if(table.getSelectedRow() == -1) {
+					if(table.getRowCount()==0) {
+						JOptionPane.showMessageDialog(null, "Course Registration Update Confirm","Course Registration",JOptionPane.OK_OPTION);
+					}
+				}
+			}
+		});
 		btnAddCourse.setBounds(20, 408, 114, 23);
 		getContentPane().add(btnAddCourse);
 		
+		// Student should able to delete the course 
 		JButton btnDeleteCourse = new JButton("Delete Course");
+		btnDeleteCourse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				DefaultTableModel model = (DefaultTableModel)table.getModel();
+				if(table.getSelectedRow() ==-1) {
+					if(table.getRowCount()==0) {
+						JOptionPane.showMessageDialog(null,"No data to delete","Course Registration",JOptionPane.OK_OPTION);
+					}
+					else {
+						JOptionPane.showMessageDialog(null,"Select a row to delete","Course Registration",JOptionPane.OK_OPTION);
+						
+					}
+				}else {
+					model.removeRow(table.getSelectedRow());
+				}
+			}
+		});
 		btnDeleteCourse.setBounds(166, 408, 114, 23);
 		getContentPane().add(btnDeleteCourse);
 		
+		// Student should able to print their courses
 		JButton btnPrintCourse = new JButton("Print Course");
+		btnPrintCourse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					table.print();
+				}
+				catch(java.awt.print.PrinterException e) {
+					System.err.format("No Printer found", e.getMessage());
+				}
+			}
+		});
 		btnPrintCourse.setBounds(309, 408, 114, 23);
 		getContentPane().add(btnPrintCourse);
 		
