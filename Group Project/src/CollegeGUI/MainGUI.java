@@ -214,7 +214,7 @@ public class MainGUI extends JFrame {
 		JButton btnSort = new JButton("Sort");
 		btnSort.setBounds(674, 408, 89, 23);
 		getContentPane().add(btnSort);
-		
+		// Student can sort the JTable either by Course Name/ID, Instructor Names,Credits,Days, and Time
 		JComboBox SortBox = new JComboBox();
 		SortBox.setModel(new DefaultComboBoxModel(new String[] {"Coure Name", "Course ID", "Instructor Name", "Credits", "Days", "Time"}));
 		SortBox.setBounds(561, 408, 103, 22);
