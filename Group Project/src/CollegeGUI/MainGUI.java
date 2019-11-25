@@ -56,15 +56,16 @@ public class MainGUI extends JFrame {
 		getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(313, 55, 450, 342);
+		panel.setBounds(349, 43, 425, 354);
 		getContentPane().add(panel);
 		panel.setLayout(null);
-		
+		//Add JScrollPane
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 0, 450, 342);
+		scrollPane.setBounds(0, 0, 425, 354);
 		panel.add(scrollPane);
-		
+		// Add the JTable w/JScroll Pane
 		table = new JTable();
+		// Create the Names of the JTable
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
@@ -119,7 +120,7 @@ public class MainGUI extends JFrame {
 		lblCredits.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblCredits.setBounds(20, 208, 75, 14);
 		getContentPane().add(lblCredits);
-		
+		// Add the number of Credits for JComboBox
 		JComboBox CreditBox = new JComboBox();
 		CreditBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
 		CreditBox.setBounds(170, 208, 103, 18);
@@ -130,6 +131,7 @@ public class MainGUI extends JFrame {
 		lblDays.setBounds(20, 260, 46, 14);
 		getContentPane().add(lblDays);
 		
+		// Add the Random Days to the JComboBox
 		JComboBox DaysBox = new JComboBox();
 		DaysBox.setModel(new DefaultComboBoxModel(new String[] {"M,T,W,TH,F", "M,T,TH", "M,W,F", "M,W", "M", "T,TH", "T,F", "T", "W,F", "W", "TH", "F", "SAT"}));
 		DaysBox.setBounds(170, 260, 103, 18);
@@ -140,9 +142,10 @@ public class MainGUI extends JFrame {
 		lblTime.setBounds(20, 316, 46, 14);
 		getContentPane().add(lblTime);
 		
+		//Add the Random Time to the JComboBox
 		JComboBox TimeBox = new JComboBox();
 		TimeBox.setModel(new DefaultComboBoxModel(new String[] {"8:00am - 8:50am", "9:05am - 10:45am", "9:55am - 10:45am", "9:55am - 11:55am", "10:55am - 12:45pm", "11:00am - 12:40pm", "1:10pm - 3:00pm", "2:15pm - 5:05pm", "4:00pm - 5:30pm", "6:00pm - 8:50pm"}));
-		TimeBox.setBounds(170, 315, 103, 18);
+		TimeBox.setBounds(170, 315, 122, 18);
 		getContentPane().add(TimeBox);
 		
 		// Student can add courses/record to the JTable
@@ -214,7 +217,7 @@ public class MainGUI extends JFrame {
 		
 		JComboBox SortBox = new JComboBox();
 		SortBox.setModel(new DefaultComboBoxModel(new String[] {"Coure Name", "Course ID", "Instructor Name", "Credits", "Days", "Time"}));
-		SortBox.setBounds(575, 408, 89, 22);
+		SortBox.setBounds(561, 408, 103, 22);
 		getContentPane().add(SortBox);
 	}
 }
