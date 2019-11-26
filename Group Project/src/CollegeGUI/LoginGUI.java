@@ -23,9 +23,9 @@ import java.io.Writer;
 import java.util.Scanner;
 import java.awt.event.ActionEvent;
 
-public class LoginGUI {
+public class LoginGUI{
 
-	private JFrame frame;
+	JFrame frame;
 	private JTextField txtUser;
 	private JLabel lblPassword;
 	private JPasswordField passwordField;
@@ -62,7 +62,7 @@ public class LoginGUI {
 		File check = new File("Student.txt");
 		if (check.exists()) {
 
-			// Checks if the file exists. will not add anything if the file does exist.
+			// Checks if the file exists. It will not add anything if the file does exist.
 		} else {
 			try {
 				File texting = new File("Student.txt");
@@ -149,6 +149,7 @@ public class LoginGUI {
 				// Open the JFrame of the Account GUI
 				AccountGUI frame = new AccountGUI();
 				frame.setVisible(true);
+				
 			}
 		});
 		btnCreateAccount.setBounds(222, 190, 135, 23);
@@ -174,4 +175,6 @@ public class LoginGUI {
 		chckbxShowPassword.setBounds(201, 160, 97, 23);
 		frame.getContentPane().add(chckbxShowPassword);
 	}
+
+	
 }

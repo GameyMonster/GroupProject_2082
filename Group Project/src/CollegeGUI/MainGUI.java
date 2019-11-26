@@ -72,7 +72,8 @@ public class MainGUI extends JFrame {
 		
 		// Create the Names of the JTable
 		table.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "Course Name", "Course ID", "Instructor Name", "Credits", "Days", "Time" }));
+		new String[] { "Course Name", "Course ID", "Instructor Name", "Credits", "Days", "Time" }));
+		
 		table.getColumnModel().getColumn(0).setPreferredWidth(82);
 		table.getColumnModel().getColumn(1).setPreferredWidth(83);
 		table.getColumnModel().getColumn(2).setPreferredWidth(103);
@@ -155,16 +156,15 @@ public class MainGUI extends JFrame {
 		JButton btnAddCourse = new JButton("Add Course");
 		btnAddCourse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// Call the JTable to add the courses
+				// Call the JTable to those ComboBox to add the courses
 				DefaultTableModel model = (DefaultTableModel) table.getModel();
 				model.addRow(new Object[] { txtCourseName.getText(), txtCourseId.getText(), txtInstructor.getText(),
 						CreditBox.getSelectedItem(), DaysBox.getSelectedItem(), TimeBox.getSelectedItem(),
 
 				});
-
 				if (table.getSelectedRow() == -1) {
 					if (table.getRowCount() == 0) {
-						JOptionPane.showMessageDialog(null, "Course Registration Update Confirm", "Course Registration",
+					JOptionPane.showMessageDialog(null, "Course Registration Update Confirm", "Course Registration",
 								JOptionPane.OK_OPTION);
 					}
 				}
@@ -217,8 +217,10 @@ public class MainGUI extends JFrame {
 				JFrame frame = new JFrame();
 				if (JOptionPane.showConfirmDialog(frame, "Are You Sure You Want To Exit?", "Course Registration",
 						JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
-					System.exit(0);
+					// It will go to the LoginGUI If Exit
+						dispose();
 				}
+		
 			}
 		});
 		btnLogout.setBounds(847, 408, 114, 23);

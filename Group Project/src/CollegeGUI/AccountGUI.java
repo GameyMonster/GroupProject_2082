@@ -171,9 +171,11 @@ public class AccountGUI extends JFrame {
 					JOptionPane.showMessageDialog(rootPane, "Error?!");
 				}
 				
-				System.exit(0);
-			}
+				// It will go to the LoginGUI once it been Create Account
+				dispose();
 		
+			}
+				
 		});
 		btnConfirm.setBounds(157, 214, 89, 23);
 		contentPane.add(btnConfirm);
