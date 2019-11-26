@@ -23,6 +23,9 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.util.Collections;
 import java.awt.event.ActionEvent;
+import javax.swing.JToolBar;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
 
 public class MainGUI extends JFrame {
 	private JTextField txtCourseName;
@@ -51,18 +54,18 @@ public class MainGUI extends JFrame {
 	 */
 	public MainGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 1000, 500);
+		setBounds(0, 0, 1150, 500);
 		getContentPane().setLayout(null);
 		getContentPane().setLayout(null);
 		getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(311, 55, 663, 342);
+		panel.setBounds(311, 55, 813, 342);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		// Add JScrollPane
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 0, 663, 342);
+		scrollPane.setBounds(10, 11, 793, 320);
 		panel.add(scrollPane);
 		// Add the JTable w/JScroll Pane
 		table = new JTable();
@@ -84,7 +87,7 @@ public class MainGUI extends JFrame {
 		JLabel lblTitle = new JLabel("Courses Registration");
 		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitle.setBounds(365, 7, 297, 37);
+		lblTitle.setBounds(451, 11, 297, 37);
 		getContentPane().add(lblTitle);
 
 		JLabel lblCourseName = new JLabel("Course Name");
@@ -170,7 +173,7 @@ public class MainGUI extends JFrame {
 				}
 			}
 		});
-		btnAddCourse.setBounds(44, 408, 114, 23);
+		btnAddCourse.setBounds(25, 408, 114, 23);
 		getContentPane().add(btnAddCourse);
 
 		// Student should able to delete the course
@@ -193,7 +196,7 @@ public class MainGUI extends JFrame {
 				}
 			}
 		});
-		btnDeleteCourse.setBounds(178, 408, 114, 23);
+		btnDeleteCourse.setBounds(170, 408, 114, 23);
 		getContentPane().add(btnDeleteCourse);
 
 		// Student should able to print their courses
@@ -223,7 +226,7 @@ public class MainGUI extends JFrame {
 		
 			}
 		});
-		btnLogout.setBounds(847, 408, 114, 23);
+		btnLogout.setBounds(986, 408, 114, 23);
 		getContentPane().add(btnLogout);
 	}
 }
