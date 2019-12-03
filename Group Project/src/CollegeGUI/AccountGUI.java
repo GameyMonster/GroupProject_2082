@@ -1,5 +1,7 @@
 package CollegeGUI;
 import java.awt.BorderLayout;
+
+import College.CreatingPasswordUsername;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -13,7 +15,14 @@ import javax.swing.SwingConstants;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class AccountGUI extends JFrame {
@@ -36,6 +45,9 @@ public class AccountGUI extends JFrame {
 	private JLabel lblEmail;
 	private JTextField txtEmail;
 	private JButton btnConfirm;
+	private ArrayList<CreatingPasswordUsername> userFiles = new ArrayList();
+	private int[] counterFile = new int[1];
+	private int counter = 0;
 
 	/**
 	 * Launch the application.
@@ -122,10 +134,12 @@ public class AccountGUI extends JFrame {
 		lblPassword.setBounds(207, 165, 77, 14);
 		contentPane.add(lblPassword);
 		
+		//password length
 		passwordField = new JPasswordField();
 		passwordField.setBounds(279, 163, 118, 17);
 		contentPane.add(passwordField);
 		
+		//check box for password
 		chckbxShowPassword = new JCheckBox("Show Password");
 		chckbxShowPassword.addActionListener(new ActionListener() {
 			// Create the Show Password Button
@@ -157,25 +171,59 @@ public class AccountGUI extends JFrame {
 			//Save the info data
 			public void actionPerformed(ActionEvent e) {
 				String userName = txtUser.getText().toString();
-				char[] password = passwordField.getPassword(); 
+				char[] password1 = passwordField.getPassword();
+				
+				//Making the char into a string for password
+				String password = new String(password1);
+				
+				//Goes to creatingpasswordusername and checks to see if the user name and password meets the
+				//circumstances 
+				CreatingPasswordUsername createFile = new CreatingPasswordUsername(userName, password);
+				boolean validOrInvalid = createFile.checkAccount();
+				
 				
 				try {
-					FileWriter writer = new FileWriter("Student.txt", true);
-					writer.write(userName);
-					writer.write(System.getProperty("line.separator"));
-					writer.write(password);
-					writer.write(System.getProperty("line.separator"));
-					writer.close();
-					JOptionPane.showMessageDialog(rootPane, "Account Is Created!");
-				} catch (Exception e1) {
+					if(validOrInvalid == true) {
+						
+						//Serializable putting the objects into a file
+						try {
+							userFiles.add(createFile);
+							
+							File f = new File("userFiles.txt");
+							FileOutputStream fos = new FileOutputStream(f);
+							ObjectOutputStream oos = new ObjectOutputStream(fos);
+							oos.writeObject(userFiles);
+							
+						} catch (FileNotFoundException e1) {
+							e1.printStackTrace();
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
+						
+						JOptionPane.showMessageDialog(rootPane, "Account Is Created!");
+						
+					}else {
+						JOptionPane.showMessageDialog(rootPane, "Your password is invalid please make another password.");
+					}
+					
+				}catch(Exception e1) {
 					JOptionPane.showMessageDialog(rootPane, "Error?!");
 				}
-				
-				// It will go to the LoginGUI once it been Create Account
-				dispose();
-		
+//				try {
+//					FileWriter writer = new FileWriter("Student.txt", true);
+//					writer.write(userName);
+//					writer.write(System.getProperty("line.separator"));
+//					writer.write(password);
+//					writer.write(System.getProperty("line.separator"));
+//					writer.close();
+//					JOptionPane.showMessageDialog(rootPane, "Account Is Created!");
+//				} catch (Exception e1) {
+//					JOptionPane.showMessageDialog(rootPane, "Error?!");
+//				}
+//				
+//				System.exit(0);
 			}
-				
+			
 		});
 		btnConfirm.setBounds(157, 214, 89, 23);
 		contentPane.add(btnConfirm);

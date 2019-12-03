@@ -1,20 +1,42 @@
 package College;
 
-import java.util.Scanner;
+import java.io.Serializable; 
+//import java.util.Scanner;
 
-public class CreatingPasswordUsername {
-	String password,username,backWordName = null;
+public class CreatingPasswordUsername implements Serializable{
+	String password,username,backWordName = "";
 	int lengthPassword;
-	Scanner input = new Scanner(System.in);
+	//Scanner input = new Scanner(System.in);
 	
-	public void creatingUserName() {
-		System.out.print("Create your user name:");
-		username = input.nextLine();
+	public CreatingPasswordUsername(String UserName, String Password){
+		setPassword(Password);
+		setUsername(UserName);
+//		checkPassword();
+		
 	}
-	public void creatingPassword() {
-		System.out.print("Create your password:");
-		password = input.nextLine();
+	public boolean checkAccount() {
+		boolean statement = false;
+		
+		while(statement != true) {
+			if(checkPasswordName() == true && checkLength() == true && checkPassword() == true) {
+				statement = true;
+			}
+			if(statement == false) {
+				return false;
+			}
+		}
+		
+		return statement;
+		
 	}
+//	public void creatingUserName() {
+//		System.out.print("Create your user name:");
+//		username = input.nextLine();
+//	}
+//	public void creatingPassword() {
+//		System.out.print("Create your password:");
+//		password = input.nextLine();
+//	}
 	public void LengthPassword() {
 		lengthPassword = password.length();
 	}
@@ -52,9 +74,8 @@ public class CreatingPasswordUsername {
 	
 	public String reverseName() {
 		for(int i = username.length() - 1; i >= 0; i--) {
-			backWordName += password.charAt(i);
+			backWordName += username.charAt(i);
 		} 
-		System.out.println(backWordName);
 		return backWordName;
 	}
 	
@@ -65,6 +86,7 @@ public class CreatingPasswordUsername {
 		}
 		return true;
 	}
+	
 	public String getPassword() {
 		return password;
 	}
@@ -83,28 +105,29 @@ public class CreatingPasswordUsername {
 	public void setLengthPassword(int lengthPassword) {
 		this.lengthPassword = lengthPassword;
 	}
-	public Scanner getInput() {
-		return input;
-	}
-	public void setInput(Scanner input) {
-		this.input = input;
-	}
+//	public Scanner getInput() {
+//		return input;
+//	}
+//	public void setInput(Scanner input) {
+//		this.input = input;
+//	}
 	
-	public static void main(String args[]) {
-		CreatingPasswordUsername prob = new CreatingPasswordUsername();
-		boolean statement = false;
-		prob.creatingUserName();
-		prob.creatingPassword();
-		while(statement != true) {
-			if(prob.checkPasswordName() == true && prob.checkLength() == true && prob.checkPassword() == true) {
-				statement = true;
-			}
-			if(statement == false) {
-				System.out.println("Your password is invalid please make another password.");
-				prob.creatingPassword();
-			}
-		}
-		
-	}
+	
+//	public static void main(String args[]) {
+//		CreatingPasswordUsername prob = new CreatingPasswordUsername();
+//		boolean statement = false;
+//		prob.creatingUserName();
+//		prob.creatingPassword();
+//		while(statement != true) {
+//			if(prob.checkPasswordName() == true && prob.checkLength() == true && prob.checkPassword() == true) {
+//				statement = true;
+//			}
+//			if(statement == false) {
+//				System.out.println("Your password is invalid please make another password.");
+//				prob.creatingPassword();
+//			}
+//		}
+//		
+//	}
 
 }
