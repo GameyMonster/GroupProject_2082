@@ -201,9 +201,12 @@ public class AccountGUI extends JFrame {
 						}
 						
 						JOptionPane.showMessageDialog(rootPane, "Account Is Created!");
+						dispose();
 						
 					}else {
 						JOptionPane.showMessageDialog(rootPane, "Your password is invalid please make another password.");
+						
+						
 					}
 					
 				}catch(Exception e1) {
