@@ -59,13 +59,13 @@ public class LoginGUI{
 		// Read the Student Txt if found
 		// Read the Username and Password
 		Writer writer = null;
-		File check = new File("Student.txt");
+		File check = new File("userFiles.txt");
 		if (check.exists()) {
 
 			// Checks if the file exists. It will not add anything if the file does exist.
 		} else {
 			try {
-				File texting = new File("Student.txt");
+				File texting = new File("userFiles.txt");
 				writer = new BufferedWriter(new FileWriter(texting));
 				writer.write("message");
 			} catch (IOException e) {
@@ -103,7 +103,7 @@ public class LoginGUI{
 		btnSignIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					File file = new File("Student.txt");
+					File file = new File("userFiles.txt");
 					Scanner scan = new Scanner(file);
 					
 					String line = null;

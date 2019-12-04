@@ -200,6 +200,14 @@ public class AccountGUI extends JFrame {
 							e1.printStackTrace();
 						}
 						
+						FileWriter writer = new FileWriter("userFiles.txt", true);
+						writer.write(System.getProperty("line.separator"));
+						writer.write(userName);
+						writer.write(System.getProperty("line.separator"));
+						writer.write(password);
+						writer.write(System.getProperty("line.separator"));
+						writer.close();
+						
 						JOptionPane.showMessageDialog(rootPane, "Account Is Created!");
 						dispose();
 						

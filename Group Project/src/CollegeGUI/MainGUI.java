@@ -32,7 +32,7 @@ public class MainGUI extends JFrame {
 	private JTextField txtCourseId;
 	private JTextField txtInstructor;
 	private JTable table;
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -69,19 +69,20 @@ public class MainGUI extends JFrame {
 		panel.add(scrollPane);
 		// Add the JTable w/JScroll Pane
 		table = new JTable();
-		
-		//Able to Sort The Column
+
+		// Able to Sort The Column
 		table.setAutoCreateRowSorter(true);
-		
+
 		// Create the Names of the JTable
 		table.setModel(new DefaultTableModel(new Object[][] {},
-		new String[] { "Course Name", "Course ID", "Instructor Name", "Credits", "Days", "Time" }));
-		
+				new String[] { "Course Name", "Course ID", "Instructor Name", "Credits", "Days", "Time" }));
+
 		table.getColumnModel().getColumn(0).setPreferredWidth(82);
 		table.getColumnModel().getColumn(1).setPreferredWidth(83);
 		table.getColumnModel().getColumn(2).setPreferredWidth(103);
 		table.getColumnModel().getColumn(3).setPreferredWidth(91);
 		table.getColumnModel().getColumn(4).setPreferredWidth(86);
+		
 		scrollPane.setViewportView(table);
 
 		JLabel lblTitle = new JLabel("Courses Registration");
@@ -167,7 +168,7 @@ public class MainGUI extends JFrame {
 				});
 				if (table.getSelectedRow() == -1) {
 					if (table.getRowCount() == 0) {
-					JOptionPane.showMessageDialog(null, "Course Registration Update Confirm", "Course Registration",
+						JOptionPane.showMessageDialog(null, "Course Registration Update Confirm", "Course Registration",
 								JOptionPane.OK_OPTION);
 					}
 				}
@@ -193,6 +194,7 @@ public class MainGUI extends JFrame {
 					}
 				} else {
 					model.removeRow(table.getSelectedRow());
+					
 				}
 			}
 		});
@@ -221,9 +223,9 @@ public class MainGUI extends JFrame {
 				if (JOptionPane.showConfirmDialog(frame, "Are You Sure You Want To Exit?", "Course Registration",
 						JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
 					// It will go to the LoginGUI If Exit
-						dispose();
+					dispose();
 				}
-		
+
 			}
 		});
 		btnLogout.setBounds(986, 408, 114, 23);
