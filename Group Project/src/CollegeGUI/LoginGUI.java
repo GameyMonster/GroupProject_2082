@@ -23,9 +23,9 @@ import java.io.Writer;
 import java.util.Scanner;
 import java.awt.event.ActionEvent;
 
-public class LoginGUI{
+public class LoginGUI {
 
-	JFrame frame;
+	private JFrame frame;
 	private JTextField txtUser;
 	private JLabel lblPassword;
 	private JPasswordField passwordField;
@@ -59,13 +59,13 @@ public class LoginGUI{
 		// Read the Student Txt if found
 		// Read the Username and Password
 		Writer writer = null;
-		File check = new File("userFiles.txt");
+		File check = new File("Student.txt");
 		if (check.exists()) {
 
-			// Checks if the file exists. It will not add anything if the file does exist.
+			// Checks if the file exists. will not add anything if the file does exist.
 		} else {
 			try {
-				File texting = new File("userFiles.txt");
+				File texting = new File("Student.txt");
 				writer = new BufferedWriter(new FileWriter(texting));
 				writer.write("message");
 			} catch (IOException e) {
@@ -103,7 +103,7 @@ public class LoginGUI{
 		btnSignIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					File file = new File("userFiles.txt");
+					File file = new File("Student.txt");
 					Scanner scan = new Scanner(file);
 					
 					String line = null;
@@ -149,7 +149,6 @@ public class LoginGUI{
 				// Open the JFrame of the Account GUI
 				AccountGUI frame = new AccountGUI();
 				frame.setVisible(true);
-				
 			}
 		});
 		btnCreateAccount.setBounds(222, 190, 135, 23);
@@ -175,6 +174,4 @@ public class LoginGUI{
 		chckbxShowPassword.setBounds(201, 160, 97, 23);
 		frame.getContentPane().add(chckbxShowPassword);
 	}
-
-	
 }

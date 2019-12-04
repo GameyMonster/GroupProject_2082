@@ -23,16 +23,13 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.util.Collections;
 import java.awt.event.ActionEvent;
-import javax.swing.JToolBar;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
 
 public class MainGUI extends JFrame {
 	private JTextField txtCourseName;
 	private JTextField txtCourseId;
 	private JTextField txtInstructor;
 	private JTable table;
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -54,41 +51,39 @@ public class MainGUI extends JFrame {
 	 */
 	public MainGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 1150, 500);
+		setBounds(0, 0, 1000, 500);
 		getContentPane().setLayout(null);
 		getContentPane().setLayout(null);
 		getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(311, 55, 813, 342);
+		panel.setBounds(311, 55, 663, 342);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		// Add JScrollPane
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 793, 320);
+		scrollPane.setBounds(0, 0, 663, 342);
 		panel.add(scrollPane);
 		// Add the JTable w/JScroll Pane
 		table = new JTable();
-
-		// Able to Sort The Column
+		
+		//Able to Sort The Column
 		table.setAutoCreateRowSorter(true);
-
+		
 		// Create the Names of the JTable
 		table.setModel(new DefaultTableModel(new Object[][] {},
 				new String[] { "Course Name", "Course ID", "Instructor Name", "Credits", "Days", "Time" }));
-
 		table.getColumnModel().getColumn(0).setPreferredWidth(82);
 		table.getColumnModel().getColumn(1).setPreferredWidth(83);
 		table.getColumnModel().getColumn(2).setPreferredWidth(103);
 		table.getColumnModel().getColumn(3).setPreferredWidth(91);
 		table.getColumnModel().getColumn(4).setPreferredWidth(86);
-		
 		scrollPane.setViewportView(table);
 
 		JLabel lblTitle = new JLabel("Courses Registration");
 		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitle.setBounds(451, 11, 297, 37);
+		lblTitle.setBounds(365, 7, 297, 37);
 		getContentPane().add(lblTitle);
 
 		JLabel lblCourseName = new JLabel("Course Name");
@@ -160,12 +155,13 @@ public class MainGUI extends JFrame {
 		JButton btnAddCourse = new JButton("Add Course");
 		btnAddCourse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// Call the JTable to those ComboBox to add the courses
+				// Call the JTable to add the courses
 				DefaultTableModel model = (DefaultTableModel) table.getModel();
 				model.addRow(new Object[] { txtCourseName.getText(), txtCourseId.getText(), txtInstructor.getText(),
 						CreditBox.getSelectedItem(), DaysBox.getSelectedItem(), TimeBox.getSelectedItem(),
 
 				});
+
 				if (table.getSelectedRow() == -1) {
 					if (table.getRowCount() == 0) {
 						JOptionPane.showMessageDialog(null, "Course Registration Update Confirm", "Course Registration",
@@ -174,7 +170,7 @@ public class MainGUI extends JFrame {
 				}
 			}
 		});
-		btnAddCourse.setBounds(25, 408, 114, 23);
+		btnAddCourse.setBounds(44, 408, 114, 23);
 		getContentPane().add(btnAddCourse);
 
 		// Student should able to delete the course
@@ -194,11 +190,10 @@ public class MainGUI extends JFrame {
 					}
 				} else {
 					model.removeRow(table.getSelectedRow());
-					
 				}
 			}
 		});
-		btnDeleteCourse.setBounds(170, 408, 114, 23);
+		btnDeleteCourse.setBounds(178, 408, 114, 23);
 		getContentPane().add(btnDeleteCourse);
 
 		// Student should able to print their courses
@@ -222,13 +217,11 @@ public class MainGUI extends JFrame {
 				JFrame frame = new JFrame();
 				if (JOptionPane.showConfirmDialog(frame, "Are You Sure You Want To Exit?", "Course Registration",
 						JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
-					// It will go to the LoginGUI If Exit
-					dispose();
+					System.exit(0);
 				}
-
 			}
 		});
-		btnLogout.setBounds(986, 408, 114, 23);
+		btnLogout.setBounds(847, 408, 114, 23);
 		getContentPane().add(btnLogout);
 	}
 }
