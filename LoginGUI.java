@@ -98,7 +98,8 @@ public class LoginGUI {
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblPassword.setBounds(116, 114, 87, 14);
 		frame.getContentPane().add(lblPassword);
-
+		
+		//Sign in button
 		JButton btnSignIn = new JButton("Sign In");
 		btnSignIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
