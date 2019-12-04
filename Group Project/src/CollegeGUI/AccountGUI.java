@@ -17,10 +17,12 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
@@ -172,6 +174,13 @@ public class AccountGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String userName = txtUser.getText().toString();
 				char[] password1 = passwordField.getPassword();
+				String firstName = txtFName.getText().toString();
+				String lastName = txtLName.getText().toString();
+				String email = txtEmail.getText().toString();
+				String phoneNumber = txtPhone.getText().toString();
+				String DOB = textDOB.getText().toString();
+				
+				
 				
 				//Making the char into a string for password
 				String password = new String(password1);
@@ -180,48 +189,79 @@ public class AccountGUI extends JFrame {
 				//circumstances 
 				CreatingPasswordUsername createFile = new CreatingPasswordUsername(userName, password);
 				boolean validOrInvalid = createFile.checkAccount();
+				//This try and catch will grab the array list in the text file and grab the information in it
+				try {
+					File f = new File("userFiles.txt");
+					FileInputStream fis = new FileInputStream(f);
+					ObjectInputStream ois = new ObjectInputStream(fis);
+					userFiles = (ArrayList<CreatingPasswordUsername>) ois.readObject();
+				}catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				} catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
+				}
 				
 				
 				try {
-					if(validOrInvalid == true) {
-						
-						//Serializable putting the objects into a file
-						try {
-							userFiles.add(createFile);
-							
-							File f = new File("userFiles.txt");
-							FileOutputStream fos = new FileOutputStream(f);
-							ObjectOutputStream oos = new ObjectOutputStream(fos);
-							oos.writeObject(userFiles);
-							
-						} catch (FileNotFoundException e1) {
-							e1.printStackTrace();
-						} catch (IOException e1) {
-							e1.printStackTrace();
+					
+					//samePasswordUsername will check the arraylist to see if there is the same username or password
+					//and if there is it will prompt them to create a new username or password.
+					boolean samePasswordUsername = false;
+					for(int x = 0; x < userFiles.size(); x++) {
+						String stringOfPassword = userFiles.get(x).getPassword();
+						String stringOfUserName = userFiles.get(x).getUsername();
+						if(userName.equals(stringOfUserName) == true || password.equals(stringOfPassword) == true) {
+							samePasswordUsername = true;
+							System.out.print("Hello");
 						}
-						
-						JOptionPane.showMessageDialog(rootPane, "Account Is Created!");
-						
-					}else {
-						JOptionPane.showMessageDialog(rootPane, "Your password is invalid please make another password.");
 					}
 					
+					//Checks if all the text boxes are filled
+					if(firstName.equalsIgnoreCase("")) {
+						JOptionPane.showMessageDialog(rootPane, "You didn't fill in all the boxes");
+					}else if(lastName.equalsIgnoreCase("")) {
+						JOptionPane.showMessageDialog(rootPane, "You didn't fill in all the boxes");
+					}else if(email.equalsIgnoreCase("")) {
+						JOptionPane.showMessageDialog(rootPane, "You didn't fill in all the boxes");
+					}else if(phoneNumber.equalsIgnoreCase("")) {
+						JOptionPane.showMessageDialog(rootPane, "You didn't fill in all the boxes");
+					}else if(DOB.equalsIgnoreCase("")) {
+						JOptionPane.showMessageDialog(rootPane, "You didn't fill in all the boxes");
+					}else if(validOrInvalid == true && samePasswordUsername == false) {
+							//If password works goes through here
+							//Serializable putting the objects into a file
+							try {
+								userFiles.add(createFile);
+							
+								File f = new File("userFiles.txt");
+								FileOutputStream fos = new FileOutputStream(f);
+								ObjectOutputStream oos = new ObjectOutputStream(fos);
+								oos.writeObject(userFiles);
+								oos.close();
+								fos.close();
+							
+							} catch (FileNotFoundException e1) {
+								e1.printStackTrace();
+							} catch (IOException e1) {
+								e1.printStackTrace();
+							}
+						
+							JOptionPane.showMessageDialog(rootPane, "Account Is Created!");
+							dispose();
+						
+						}else if(validOrInvalid == false) {
+							JOptionPane.showMessageDialog(rootPane, "Your password is invalid please make another password.");
+						}else{
+							JOptionPane.showMessageDialog(rootPane, "You need a new password or username.");
+							txtUser.setText("");
+							passwordField.setText("");
+							txtUser.requestFocus();
+						}
 				}catch(Exception e1) {
 					JOptionPane.showMessageDialog(rootPane, "Error?!");
 				}
-//				try {
-//					FileWriter writer = new FileWriter("Student.txt", true);
-//					writer.write(userName);
-//					writer.write(System.getProperty("line.separator"));
-//					writer.write(password);
-//					writer.write(System.getProperty("line.separator"));
-//					writer.close();
-//					JOptionPane.showMessageDialog(rootPane, "Account Is Created!");
-//				} catch (Exception e1) {
-//					JOptionPane.showMessageDialog(rootPane, "Error?!");
-//				}
-//				
-//				System.exit(0);
 			}
 			
 		});
