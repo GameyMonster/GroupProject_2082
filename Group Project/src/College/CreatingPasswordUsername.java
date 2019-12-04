@@ -29,14 +29,6 @@ public class CreatingPasswordUsername implements Serializable{
 		return statement;
 		
 	}
-//	public void creatingUserName() {
-//		System.out.print("Create your user name:");
-//		username = input.nextLine();
-//	}
-//	public void creatingPassword() {
-//		System.out.print("Create your password:");
-//		password = input.nextLine();
-//	}
 	public void LengthPassword() {
 		lengthPassword = password.length();
 	}
@@ -105,29 +97,5 @@ public class CreatingPasswordUsername implements Serializable{
 	public void setLengthPassword(int lengthPassword) {
 		this.lengthPassword = lengthPassword;
 	}
-//	public Scanner getInput() {
-//		return input;
-//	}
-//	public void setInput(Scanner input) {
-//		this.input = input;
-//	}
-	
-	
-//	public static void main(String args[]) {
-//		CreatingPasswordUsername prob = new CreatingPasswordUsername();
-//		boolean statement = false;
-//		prob.creatingUserName();
-//		prob.creatingPassword();
-//		while(statement != true) {
-//			if(prob.checkPasswordName() == true && prob.checkLength() == true && prob.checkPassword() == true) {
-//				statement = true;
-//			}
-//			if(statement == false) {
-//				System.out.println("Your password is invalid please make another password.");
-//				prob.creatingPassword();
-//			}
-//		}
-//		
-//	}
 
 }
