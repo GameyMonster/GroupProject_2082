@@ -29,7 +29,7 @@ public class MainGUI extends JFrame {
 	private JTextField txtCourseId;
 	private JTextField txtInstructor;
 	private JTable table;
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -66,10 +66,10 @@ public class MainGUI extends JFrame {
 		panel.add(scrollPane);
 		// Add the JTable w/JScroll Pane
 		table = new JTable();
-		
-		//Able to Sort The Column
+
+		// Able to Sort The Column
 		table.setAutoCreateRowSorter(true);
-		
+
 		// Create the Names of the JTable
 		table.setModel(new DefaultTableModel(new Object[][] {},
 				new String[] { "Course Name", "Course ID", "Instructor Name", "Credits", "Days", "Time" }));
