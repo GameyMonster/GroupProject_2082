@@ -35,6 +35,8 @@ public class MainGUI extends JFrame {
 	private JTable table_1;
 	private String firstName, lastName, email, DOB, userName;
 	private JTextField textField;
+	
+
 
 	/**
 	 * Launch the application.
@@ -51,7 +53,7 @@ public class MainGUI extends JFrame {
 			}
 		});
 	}
-
+	
 	public MainGUI(String userName, String firstName, String lastName, String email, String DOB) {
 		setFirstName(firstName);
 		setLastName(lastName);
@@ -111,34 +113,41 @@ public class MainGUI extends JFrame {
 		getContentPane().add(Course_scrollPane);
 
 		table_1 = new JTable();
-		table_1.setModel(new DefaultTableModel(new Object[][] {
-				{ "ART 1024", "2D Drawing", "Jesus Fuller", "2.0", "W", "9:30am - 11:00am" },
-				{ "ART 1031", "Photography I", "Brendan Mcdonald", "2.0", "T,TH", "7:00pm - 9:00pm" },
-				{ "ART 1055", "Watercolor", "Regina Stephens", "2.0", "M,T,W,TH,F", "9:55am - 11:55am" },
-				{ "BIOL 1024", "Human Biology", "Elizabeth Pierce", "3.0", "W", "4:50pm - 5:40pm" },
-				{ "COMM 1021", "Public Speaking", "Kelly Sandoval", "1.0", "M,T,W,TH,F", "3:20pm - 4:35pm" },
-				{ "COMM 2071", "Communication and Gender", "Olive Hamilton", "2.0", "M,T,W,TH", "7:45am - 8:35am" },
-				{ "CSCI 1020", "Intro PC & Info System", "Anne Weaver", "4.0", "T,TH", "3:35pm - 5:15pm" },
-				{ "CSCI 1081", "Programming Fundamentals", "Jody Frank", "5.0", "T,TH", "11:00am - 11:50am" },
-				{ "CSCI 2061", "Python for Programmer", "Malcolm Fox", "4.0", "M", "12:05pm - 12:55pm" },
-				{ "CSCI 2082", "Data Structure & Algorithm", "Emma Henderson", "4.0", "M,T,W,TH,F", "1:10pm - 3:10pm" },
-				{ "ENGL 0090", "Writing/Grammer", "Freda Thompson", "5.0", "F", "10:50am - 12:05pm" },
-				{ "ENGL 2026", "Creative Writing", "Ernesto Mckenzie", "3.0", "M,T,W,TH", "8:50am - 9:40am" },
-				{ "ESCI 1055", "Meteorlogy Lab", "Bessie Swanson", "1.0", "M", "9:00am - 10:15am" },
-				{ "HIS 1035", "Minnesota History", "Alfred Patton", "1.0", "F", "9:30am - 10:45am" },
-				{ "HUM 1045", "American Film", "Elsa Welch", "1.0", "F", "8:00am - 9:15am " },
-				{ "MATH 1025", "Statistic", "Jerome Woods", "4.0", "M", "8:00pm - 9:50pm" },
-				{ "MATH 1061", "College Algebra", "Brittany Clarke", "4.0", "TH", "10:30am - 12:10pm" },
-				{ "MATH 1081", "Calculus I", "Phillip Cooper", "5.0", "T,TH", "11:00am - 12:15pm " },
-				{ "MUSC 2051", "World Music", "Bradford Watson", "5.0", "M,T,W,TH", "2:15pm - 3:30pm" },
-				{ "PHIL 1025", "Intro to Eastern Philosophy", "Heidi Bailey", "4.0", "M,W", "12:45pm - 2:00pm" },
-				{ "PHYS 1030", "Astronomy ", "Kenny Carson", "3.0", "T,TH", "8:15am - 9:40am" },
-				{ "PHYS 1081", "Intro Physics I", "Delores Quinn", "3.0", "M,W,F", "7:45am - 8:35am" },
-				{ "SOC 1020", "Intro Sociology", "Eduardo Anderson", "2.0", "M,W,F", "6:00pm - 9:50pm" },
-				{ "THTR 1081", "World of Drama", "Albert Gill", "4.0", "M,W,F", "9:55am - 10:45am" },
-
-		}, new String[] { "Course ID", "Course Name", "Instructor", "Credits", "Day", "Time" }) {
-			boolean[] columnEditables = new boolean[] { false, false, false, false, false, false };
+		table_1.setModel(new DefaultTableModel(
+			new Object[][] {
+				{"ART 1024", "2D Drawing", "Jesus Fuller", "2.0", "W", "9:30am - 11:00am"},
+				{"ART 1031", "Photography I", "Brendan Mcdonald", "2.0", "T,TH", "7:00pm - 9:00pm"},
+				{"ART 1055", "Watercolor", "Regina Stephens", "2.0", "M,T,W,TH,F", "9:55am - 11:55am"},
+				{"BIOL 1024", "Human Biology", "Elizabeth Pierce", "3.0", "W", "4:50pm - 5:40pm"},
+				{"COMM 1021", "Public Speaking", "Kelly Sandoval", "1.0", "M,T,W,TH,F", "3:20pm - 4:35pm"},
+				{"COMM 2071", "Communication and Gender", "Olive Hamilton", "2.0", "M,T,W,TH", "7:45am - 8:35am"},
+				{"CSCI 1020", "Intro PC & Info System", "Anne Weaver", "4.0", "T,TH", "3:35pm - 5:15pm"},
+				{"CSCI 1081", "Programming Fundamentals", "Jody Frank", "5.0", "T,TH", "11:00am - 11:50am"},
+				{"CSCI 2061", "Python for Programmer", "Malcolm Fox", "4.0", "M", "12:05pm - 12:55pm"},
+				{"CSCI 2082", "Data Structure & Algorithm", "Emma Henderson", "4.0", "M,T,W,TH,F", "1:10pm - 3:10pm"},
+				{"ENGL 0090", "Writing/Grammer", "Freda Thompson", "5.0", "F", "10:50am - 12:05pm"},
+				{"ENGL 2026", "Creative Writing", "Ernesto Mckenzie", "3.0", "M,T,W,TH", "8:50am - 9:40am"},
+				{"ESCI 1055", "Meteorlogy Lab", "Bessie Swanson", "1.0", "M", "9:00am - 10:15am"},
+				{"HIS 1035", "Minnesota History", "Alfred Patton", "1.0", "F", "9:30am - 10:45am"},
+				{"HUM 1045", "American Film", "Elsa Welch", "1.0", "F", "8:00am - 9:15am "},
+				{"MATH 1025", "Statistic", "Jerome Woods", "4.0", "M", "8:00pm - 9:50pm"},
+				{"MATH 1061", "College Algebra", "Brittany Clarke", "4.0", "TH", "10:30am - 12:10pm"},
+				{"MATH 1081", "Calculus I", "Phillip Cooper", "5.0", "T,TH", "11:00am - 12:15pm "},
+				{"MUSC 2051", "World Music", "Bradford Watson", "5.0", "M,T,W,TH", "2:15pm - 3:30pm"},
+				{"PHIL 1025", "Intro to Eastern Philosophy", "Heidi Bailey", "4.0", "M,W", "12:45pm - 2:00pm"},
+				{"PHYS 1030", "Astronomy ", "Kenny Carson", "3.0", "T,TH", "8:15am - 9:40am"},
+				{"PHYS 1081", "Intro Physics I", "Delores Quinn", "3.0", "M,W,F", "7:45am - 8:35am"},
+				{"SOC 1020", "Intro Sociology", "Eduardo Anderson", "2.0", "M,W,F", "6:00pm - 9:50pm"},
+				{"THTR 1081", "World of Drama", "Albert Gill", "4.0", "M,W,F", "9:55am - 10:45am"},
+			
+			},
+			new String[] {
+				"Course ID", "Course Name", "Instructor", "Credits", "Day", "Time"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false, false, false
+			};
 
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
@@ -269,6 +278,7 @@ public class MainGUI extends JFrame {
 		DOB = dOB;
 	}
 
+
 	public String getUserName() {
 		return userName;
 	}
@@ -276,5 +286,7 @@ public class MainGUI extends JFrame {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
+	
 
 }
