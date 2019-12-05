@@ -233,17 +233,25 @@ public class MainGUI extends JFrame {
 		getContentPane().add(btnPrintCourses);
 		
 		textField = new JTextField();
-		textField.setBounds(1130, 77, 102, 20);
+		textField.setBounds(1113, 77, 119, 20);
 		getContentPane().add(textField);
 		textField.setColumns(10);
 		
+		//Search Button
 		JButton btnSearch = new JButton("Search");
+		btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			
+			
+			}
+		});
 		btnSearch.setBounds(1239, 76, 89, 23);
 		getContentPane().add(btnSearch);
 		
-		JLabel lblSearchBar = new JLabel("Search Bar");
-		lblSearchBar.setBounds(1055, 80, 68, 14);
-		getContentPane().add(lblSearchBar);
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Course ID", "Course Name", "Instructor", "Credits", "Days", "Time"}));
+		comboBox.setBounds(1008, 77, 97, 20);
+		getContentPane().add(comboBox);
 	}
 
 	public String getFirstName() {
@@ -286,7 +294,4 @@ public class MainGUI extends JFrame {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
-	
-
 }
