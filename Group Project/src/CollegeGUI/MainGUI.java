@@ -33,6 +33,7 @@ import java.awt.event.ActionEvent;
 public class MainGUI extends JFrame {
 	private JTable table;
 	private JTable table_1;
+	private String firstName,lastName,email,DOB,userName;
 
 	/**
 	 * Launch the application.
@@ -49,11 +50,20 @@ public class MainGUI extends JFrame {
 			}
 		});
 	}
+	
+	public MainGUI(String userName, String firstName, String lastName, String email, String DOB) {
+		setFirstName(firstName);
+		setLastName(lastName);
+		setEmail(email);
+		setDOB(DOB);
+		setUserName(userName);
+	}
 
 	/**
 	 * Create the frame.
 	 */
 	public MainGUI() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 2000, 600);
 		getContentPane().setLayout(null);
@@ -108,7 +118,6 @@ public class MainGUI extends JFrame {
 		table_1 = new JTable();
 		table_1.setModel(new DefaultTableModel(
 			new Object[][] {
-				
 				{"ART 1024", "2D Drawing", "Jesus Fuller", "2.0", "W", "9:30am - 11:00am"},
 				{"ART 1031", "Photography I", "Brendan Mcdonald", "2.0", "T,TH", "7:00pm - 9:00pm"},
 				{"ART 1055", "Watercolor", "Regina Stephens", "2.0", "M,T,W,TH,F", "9:55am - 11:55am"},
@@ -227,4 +236,44 @@ public class MainGUI extends JFrame {
 		btnPrintCourses.setBounds(333, 520, 133, 30);
 		getContentPane().add(btnPrintCourses);
 	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getDOB() {
+		return DOB;
+	}
+
+	public void setDOB(String dOB) {
+		DOB = dOB;
+	}
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
 }

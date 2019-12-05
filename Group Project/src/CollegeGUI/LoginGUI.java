@@ -133,11 +133,17 @@ public class LoginGUI{
 					
 					String stringOfPassword = userFiles.get(x).getPassword();
 					String stringOfUserName = userFiles.get(x).getUsername();
+					String stringOfName = userFiles.get(x).getFirstName();
+					String stringOfLast = userFiles.get(x).getLastName();
+					String stringOfEmail = userFiles.get(x).getEmail();
+					String stringOfDOB = userFiles.get(x).getDOB();
+					
 					stringOfUserName = stringOfUserName.toLowerCase();
 					puname = puname.toLowerCase();
 			
 					if(puname.equals(stringOfUserName) && ppaswd.equals(stringOfPassword)) {
-						MainGUI menu = new MainGUI();
+						System.out.println(stringOfName);
+						MainGUI menu = new MainGUI(stringOfUserName,stringOfName,stringOfLast,stringOfEmail,stringOfDOB);
 						menu.setVisible(true);
 						break;
 					}else if(puname.equals("") && ppaswd.equals("")) {
