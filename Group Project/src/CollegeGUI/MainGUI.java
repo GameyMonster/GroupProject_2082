@@ -221,7 +221,7 @@ public class MainGUI extends JFrame {
 		getContentPane().add(textField);
 
 		JLabel lblSearch = new JLabel("Search");
-		lblSearch.setBounds(1041, 44, 84, 14);
+		lblSearch.setBounds(1045, 54, 51, 14);
 		getContentPane().add(lblSearch);
 		
 		JPanel panel = new JPanel();
