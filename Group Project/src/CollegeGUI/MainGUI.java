@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
 import javax.swing.JButton;
@@ -29,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class MainGUI extends JFrame {
 	private JTable table;
@@ -107,7 +110,11 @@ public class MainGUI extends JFrame {
 			}
 		});
 		Main_scrollPane.setViewportView(table);
-
+		
+		// Search/Filter Name
+		
+				
+		
 		JScrollPane Course_scrollPane = new JScrollPane();
 		Course_scrollPane.setBounds(665, 108, 663, 381);
 		getContentPane().add(Course_scrollPane);
@@ -115,40 +122,44 @@ public class MainGUI extends JFrame {
 		table_1 = new JTable();
 		table_1.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"ART 1024", "2D Drawing", "Jesus Fuller", "2.0", "W", "9:30am - 11:00am"},
-				{"ART 1031", "Photography I", "Brendan Mcdonald", "2.0", "T,TH", "7:00pm - 9:00pm"},
-				{"ART 1055", "Watercolor", "Regina Stephens", "2.0", "M,T,W,TH,F", "9:55am - 11:55am"},
-				{"BIOL 1024", "Human Biology", "Elizabeth Pierce", "3.0", "W", "4:50pm - 5:40pm"},
-				{"COMM 1021", "Public Speaking", "Kelly Sandoval", "1.0", "M,T,W,TH,F", "3:20pm - 4:35pm"},
-				{"COMM 2071", "Communication and Gender", "Olive Hamilton", "2.0", "M,T,W,TH", "7:45am - 8:35am"},
-				{"CSCI 1020", "Intro PC & Info System", "Anne Weaver", "4.0", "T,TH", "3:35pm - 5:15pm"},
-				{"CSCI 1081", "Programming Fundamentals", "Jody Frank", "5.0", "T,TH", "11:00am - 11:50am"},
-				{"CSCI 2061", "Python for Programmer", "Malcolm Fox", "4.0", "M", "12:05pm - 12:55pm"},
-				{"CSCI 2082", "Data Structure & Algorithm", "Emma Henderson", "4.0", "M,T,W,TH,F", "1:10pm - 3:10pm"},
-				{"ENGL 0090", "Writing/Grammer", "Freda Thompson", "5.0", "F", "10:50am - 12:05pm"},
-				{"ENGL 2026", "Creative Writing", "Ernesto Mckenzie", "3.0", "M,T,W,TH", "8:50am - 9:40am"},
-				{"ESCI 1055", "Meteorlogy Lab", "Bessie Swanson", "1.0", "M", "9:00am - 10:15am"},
-				{"HIS 1035", "Minnesota History", "Alfred Patton", "1.0", "F", "9:30am - 10:45am"},
-				{"HUM 1045", "American Film", "Elsa Welch", "1.0", "F", "8:00am - 9:15am "},
-				{"MATH 1025", "Statistic", "Jerome Woods", "4.0", "M", "8:00pm - 9:50pm"},
-				{"MATH 1061", "College Algebra", "Brittany Clarke", "4.0", "TH", "10:30am - 12:10pm"},
-				{"MATH 1081", "Calculus I", "Phillip Cooper", "5.0", "T,TH", "11:00am - 12:15pm "},
-				{"MUSC 2051", "World Music", "Bradford Watson", "5.0", "M,T,W,TH", "2:15pm - 3:30pm"},
-				{"PHIL 1025", "Intro to Eastern Philosophy", "Heidi Bailey", "4.0", "M,W", "12:45pm - 2:00pm"},
-				{"PHYS 1030", "Astronomy ", "Kenny Carson", "3.0", "T,TH", "8:15am - 9:40am"},
-				{"PHYS 1081", "Intro Physics I", "Delores Quinn", "3.0", "M,W,F", "7:45am - 8:35am"},
-				{"SOC 1020", "Intro Sociology", "Eduardo Anderson", "2.0", "M,W,F", "6:00pm - 9:50pm"},
-				{"THTR 1081", "World of Drama", "Albert Gill", "4.0", "M,W,F", "9:55am - 10:45am"},
-			
+				{"ART 1024", "2D Drawing", "Jesus Fuller", new Double(3.0), "W", "9:30am - 11:00am"},
+				{"ART 1031", "Photography I", "Brendan Mcdonald", new Double(2.0), "T,TH", "7:00pm - 9:00pm"},
+				{"ART 1055", "Watercolor", "Regina Stephens", new Double(3.0), "M,T,W,TH,F", "9:55am - 11:55am"},
+				{"BIOL 1024", "Human Biology", "Elizabeth Pierce", new Double(1.0), "W", "4:50pm - 5:40pm"},
+				{"COMM 1021", "Public Speaking", "Kelly Sandoval", new Double(4.0), "M,T,W,TH,F", "3:20pm - 4:35pm"},
+				{"COMM 2071", "Communication and Gender", "Olive Hamilton", new Double(3.0), "M,T,W,TH", "7:45am - 8:35am"},
+				{"CSCI 1020", "Intro PC & Info System", "Anne Weaver", new Double(5.0), "T,TH", "3:35pm - 5:15pm"},
+				{"CSCI 1081", "Programming Fundamentals", "Jody Frank", new Double(2.0), "T,TH", "11:00am - 11:50am"},
+				{"CSCI 2061", "Python for Programmer", "Malcolm Fox", new Double(1.0), "M", "12:05pm - 12:55pm"},
+				{"CSCI 2082", "Data Structure & Algorithm", "Emma Henderson", new Double(3.0), "M,T,W,TH,F", "1:10pm - 3:10pm"},
+				{"ENGL 0090", "Writing/Grammer", "Freda Thompson", new Double(2.0), "F", "10:50am - 12:05pm"},
+				{"ENGL 2026", "Creative Writing", "Ernesto Mckenzie", new Double(5.0), "M,T,W,TH", "8:50am - 9:40am"},
+				{"ESCI 1055", "Meteorlogy Lab", "Bessie Swanson", new Double(4.0), "M", "9:00am - 10:15am"},
+				{"HIS 1035", "Minnesota History", "Alfred Patton", new Double(5.0), "F", "9:30am - 10:45am"},
+				{"HUM 1045", "American Film", "Elsa Welch", new Double(2.0), "F", "8:00am - 9:15am "},
+				{"MATH 1025", "Statistic", "Jerome Woods", new Double(1.0), "M", "8:00pm - 9:50pm"},
+				{"MATH 1061", "College Algebra", "Brittany Clarke", new Double(2.0), "TH", "10:30am - 12:10pm"},
+				{"MATH 1081", "Calculus I", "Phillip Cooper", new Double(5.0), "T,TH", "11:00am - 12:15pm "},
+				{"MUSC 2051", "World Music", "Bradford Watson", new Double(3.0), "M,T,W,TH", "2:15pm - 3:30pm"},
+				{"PHIL 1025", "Intro to Eastern Philosophy", "Heidi Bailey", new Double(4.0), "M,W", "12:45pm - 2:00pm"},
+				{"PHYS 1030", "Astronomy ", "Kenny Carson", new Double(1.0), "T,TH", "8:15am - 9:40am"},
+				{"PHYS 1081", "Intro Physics I", "Delores Quinn", new Double(2.0), "M,W,F", "7:45am - 8:35am"},
+				{"SOC 1020", "Intro Sociology", "Eduardo Anderson", new Double(4.0), "M,W,F", "6:00pm - 9:50pm"},
+				{"THTR 1081", "World of Drama", "Albert Gill", new Double(5.0), "M,W,F", "9:55am - 10:45am"},
 			},
 			new String[] {
 				"Course ID", "Course Name", "Instructor", "Credits", "Day", "Time"
 			}
 		) {
+			Class[] columnTypes = new Class[] {
+				Object.class, String.class, Object.class, Double.class, String.class, String.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
 			boolean[] columnEditables = new boolean[] {
 				false, false, false, false, false, false
 			};
-
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
 			}
@@ -160,7 +171,7 @@ public class MainGUI extends JFrame {
 
 		// Sort the JTable
 		table.setAutoCreateRowSorter(true);
-		table_1.setAutoCreateRowSorter(true);
+	
 
 		TableRowSorter<TableModel> sorter = new TableRowSorter<>(table_1.getModel());
 		table_1.setRowSorter(sorter);
@@ -174,6 +185,7 @@ public class MainGUI extends JFrame {
 
 		Course_scrollPane.setViewportView(table_1);
 
+		
 		// Add Courses
 		JButton btnAddCourses = new JButton("Add Courses");
 		btnAddCourses.addActionListener(new ActionListener() {
@@ -192,6 +204,9 @@ public class MainGUI extends JFrame {
 					row[4] = model1.getValueAt(index[i], 4);
 					row[5] = model1.getValueAt(index[i], 5);
 					model2.addRow(row);
+					//Need To Compare The Time
+					
+					
 				}
 
 			}
@@ -232,26 +247,24 @@ public class MainGUI extends JFrame {
 		btnPrintCourses.setBounds(333, 520, 133, 30);
 		getContentPane().add(btnPrintCourses);
 		
+		// Able to Filter the Courses 
 		textField = new JTextField();
-		textField.setBounds(1113, 77, 119, 20);
-		getContentPane().add(textField);
-		textField.setColumns(10);
-		
-		//Search Button
-		JButton btnSearch = new JButton("Search");
-		btnSearch.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			
-			
+		textField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				DefaultTableModel tb = (DefaultTableModel)table_1.getModel();
+				String search = textField.getText().toLowerCase();
+				TableRowSorter<DefaultTableModel> trRowSorter = new TableRowSorter<DefaultTableModel>(tb);
+				table_1.setRowSorter(trRowSorter);
+				trRowSorter.setRowFilter(RowFilter.regexFilter(search));
 			}
 		});
-		btnSearch.setBounds(1239, 76, 89, 23);
-		getContentPane().add(btnSearch);
+		textField.setBounds(897, 77, 206, 20);
+		getContentPane().add(textField);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Course ID", "Course Name", "Instructor", "Credits", "Days", "Time"}));
-		comboBox.setBounds(1008, 77, 97, 20);
-		getContentPane().add(comboBox);
+		JLabel lblSearch = new JLabel("Search Bar:");
+		lblSearch.setBounds(803, 80, 84, 14);
+		getContentPane().add(lblSearch);
 	}
 
 	public String getFirstName() {
