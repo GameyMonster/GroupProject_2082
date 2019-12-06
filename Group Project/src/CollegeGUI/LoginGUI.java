@@ -141,8 +141,7 @@ public class LoginGUI {
 
 					if (puname.equals(stringOfUserName) && ppaswd.equals(stringOfPassword)) {
 						System.out.println(stringOfName);
-						MainGUI menu = new MainGUI(stringOfUserName, stringOfName, stringOfLast, stringOfEmail,
-								stringOfDOB);
+						MainGUI menu = new MainGUI();
 						menu.setVisible(true);
 						break;
 					} else if (puname.equals("") && ppaswd.equals("")) {
