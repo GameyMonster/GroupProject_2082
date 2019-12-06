@@ -253,7 +253,7 @@ public class MainGUI extends JFrame {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				DefaultTableModel tb = (DefaultTableModel)table_1.getModel();
-				String search = textField.getText().toLowerCase();
+				String search = textField.getText();
 				TableRowSorter<DefaultTableModel> trRowSorter = new TableRowSorter<DefaultTableModel>(tb);
 				table_1.setRowSorter(trRowSorter);
 				trRowSorter.setRowFilter(RowFilter.regexFilter(search));
