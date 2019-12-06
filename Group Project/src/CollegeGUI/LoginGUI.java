@@ -1,15 +1,19 @@
 package CollegeGUI;
-
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
+import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+
 import College.CreatingPasswordUsername;
+
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
@@ -21,9 +25,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.awt.event.ActionEvent;
 
-public class LoginGUI {
+public class LoginGUI{
 
 	JFrame frame;
 	private JTextField txtUser;
@@ -101,54 +106,60 @@ public class LoginGUI {
 		frame.getContentPane().add(lblPassword);
 
 		JButton btnSignIn = new JButton("Sign In");
-		// sign in button listener
+		//sign in button listener
 		btnSignIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String puname = txtUser.getText();
 				char[] password1 = passwordField.getPassword();
 				String ppaswd = new String(password1);
-
+				
+				
 				try {
 					File f = new File("userFile.txt");
 					FileInputStream fis = new FileInputStream(f);
 					ObjectInputStream ois = new ObjectInputStream(fis);
 					userFiles = (ArrayList<CreatingPasswordUsername>) ois.readObject();
-				} catch (FileNotFoundException e1) {
+				}catch (FileNotFoundException e1) {
 					e1.printStackTrace();
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				} catch (ClassNotFoundException e1) {
 					e1.printStackTrace();
 				}
-
-				for (int x = 0; x < userFiles.size(); x++) {
-
+				
+				
+				
+				for(int x = 0; x < userFiles.size(); x++) {
+					
 					String stringOfPassword = userFiles.get(x).getPassword();
 					String stringOfUserName = userFiles.get(x).getUsername();
 					String stringOfName = userFiles.get(x).getFirstName();
 					String stringOfLast = userFiles.get(x).getLastName();
 					String stringOfEmail = userFiles.get(x).getEmail();
 					String stringOfDOB = userFiles.get(x).getDOB();
-
+					
 					stringOfUserName = stringOfUserName.toLowerCase();
 					puname = puname.toLowerCase();
-
-					if (puname.equals(stringOfUserName) && ppaswd.equals(stringOfPassword)) {
-						System.out.println(stringOfName);
+					if(puname.equals(stringOfUserName) && ppaswd.equals(stringOfPassword)) {
 						MainGUI menu = new MainGUI();
+						menu.setFirstName(stringOfName);
+						menu.setLastName(stringOfLast);
+						menu.setUserName(stringOfUserName);
+						menu.setEmail(stringOfEmail);
+						menu.setDOB(stringOfDOB);
 						menu.setVisible(true);
 						break;
-					} else if (puname.equals("") && ppaswd.equals("")) {
+					}else if(puname.equals("") && ppaswd.equals("")) {
 						JOptionPane.showMessageDialog(null, "Please insert Username and Password");
 						break;
-					} else if (x == userFiles.size() - 1) {
+					}else if(x == userFiles.size() - 1) {
 						JOptionPane.showMessageDialog(null, "Wrong Username / Password");
 						txtUser.setText("");
 						passwordField.setText("");
 						txtUser.requestFocus();
 					}
 				}
-
+				
 			}
 		});
 		btnSignIn.setBounds(52, 190, 135, 23);
@@ -161,7 +172,7 @@ public class LoginGUI {
 				// Open the JFrame of the Account GUI
 				AccountGUI frame = new AccountGUI();
 				frame.setVisible(true);
-
+				
 			}
 		});
 		btnCreateAccount.setBounds(222, 190, 135, 23);
@@ -188,4 +199,5 @@ public class LoginGUI {
 		frame.getContentPane().add(chckbxShowPassword);
 	}
 
+	
 }
