@@ -58,7 +58,7 @@ public class MainGUI extends JFrame {
 	public MainGUI() {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 1400, 600);
+		setBounds(0, 0, 1400, 560);
 		getContentPane().setLayout(null);
 		getContentPane().setLayout(null);
 		getContentPane().setLayout(null);
@@ -66,7 +66,7 @@ public class MainGUI extends JFrame {
 		JLabel lblTitle = new JLabel("Courses Registration");
 		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitle.setBounds(526, 11, 297, 37);
+		lblTitle.setBounds(529, 11, 297, 37);
 		getContentPane().add(lblTitle);
 
 		// Student can logout the system
@@ -80,7 +80,7 @@ public class MainGUI extends JFrame {
 				}
 			}
 		});
-		btnLogout.setBounds(1238, 524, 114, 23);
+		btnLogout.setBounds(1230, 485, 114, 23);
 		getContentPane().add(btnLogout);
 	
 		// Add Courses
@@ -106,7 +106,7 @@ public class MainGUI extends JFrame {
 			}
 		});
 				JScrollPane Course_scrollPane = new JScrollPane();
-				Course_scrollPane.setBounds(689, 109, 663, 381);
+				Course_scrollPane.setBounds(689, 93, 663, 381);
 				getContentPane().add(Course_scrollPane);
 				
 						table_1 = new JTable();
@@ -163,7 +163,7 @@ public class MainGUI extends JFrame {
 								table_1.setRowSorter(sorter);
 								
 										Course_scrollPane.setViewportView(table_1);
-		btnAddCourses.setBounds(22, 520, 119, 30);
+		btnAddCourses.setBounds(10, 481, 119, 30);
 		getContentPane().add(btnAddCourses);
 		
 		// Delete Courses
@@ -184,7 +184,7 @@ public class MainGUI extends JFrame {
 				}
 			}
 		});
-		btnDeleteCourses.setBounds(174, 520, 127, 30);
+		btnDeleteCourses.setBounds(139, 481, 127, 30);
 		getContentPane().add(btnDeleteCourses);
 		
 		// User can Print the Courses
@@ -202,7 +202,7 @@ public class MainGUI extends JFrame {
 				}
 			}
 		});
-		btnPrintCourses.setBounds(333, 520, 133, 30);
+		btnPrintCourses.setBounds(276, 481, 133, 30);
 		getContentPane().add(btnPrintCourses);
 
 		// Able to Filter the Courses
@@ -217,15 +217,15 @@ public class MainGUI extends JFrame {
 				trRowSorter.setRowFilter(RowFilter.regexFilter(search));
 			}
 		});
-		textField.setBounds(1034, 78, 206, 20);
+		textField.setBounds(1044, 69, 206, 20);
 		getContentPane().add(textField);
 
 		JLabel lblSearch = new JLabel("Search");
-		lblSearch.setBounds(1034, 64, 84, 14);
+		lblSearch.setBounds(1041, 44, 84, 14);
 		getContentPane().add(lblSearch);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 109, 669, 381);
+		panel.setBounds(10, 93, 669, 381);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -246,6 +246,7 @@ public class MainGUI extends JFrame {
 						
 								// Sort the JTable
 								table.setAutoCreateRowSorter(true);
+											
 	}
 
 	public String getFirstName() {

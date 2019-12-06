@@ -1,20 +1,15 @@
 package CollegeGUI;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
-
 import College.CreatingPasswordUsername;
-
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
@@ -26,7 +21,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Writer;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.awt.event.ActionEvent;
 
 public class LoginGUI {
