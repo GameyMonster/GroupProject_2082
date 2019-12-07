@@ -21,12 +21,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.text.MessageFormat;
+import javax.swing.JFormattedTextField;
+import javax.swing.JTextArea;
 
 public class MainGUI extends JFrame {
 	private JTable table;
 	private JTable table_1;
 	private String firstName, lastName, email, DOB, userName;
-	private JTextField textField;
+	private JTextField searchField;
+	
 
 	/**
 	 * Launch the application.
@@ -206,32 +209,32 @@ public class MainGUI extends JFrame {
 		getContentPane().add(btnPrintCourses);
 
 		// Able to Filter the Courses
-		textField = new JTextField();
-		textField.addKeyListener(new KeyAdapter() {
+		searchField = new JTextField();
+		searchField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				DefaultTableModel tb = (DefaultTableModel) table_1.getModel();
-				String search = textField.getText();
+				String search = searchField.getText();
 				TableRowSorter<DefaultTableModel> trRowSorter = new TableRowSorter<DefaultTableModel>(tb);
 				table_1.setRowSorter(trRowSorter);
 				trRowSorter.setRowFilter(RowFilter.regexFilter(search));
 			}
 		});
-		textField.setBounds(1044, 69, 206, 20);
-		getContentPane().add(textField);
+		searchField.setBounds(1044, 69, 206, 20);
+		getContentPane().add(searchField);
 
 		JLabel lblSearch = new JLabel("Search");
 		lblSearch.setBounds(1045, 54, 51, 14);
 		getContentPane().add(lblSearch);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(10, 93, 669, 381);
-		getContentPane().add(panel);
-		panel.setLayout(null);
+		JPanel Tablepanel = new JPanel();
+		Tablepanel.setBounds(10, 93, 669, 381);
+		getContentPane().add(Tablepanel);
+		Tablepanel.setLayout(null);
 		
 				JScrollPane Main_scrollPane = new JScrollPane();
 				Main_scrollPane.setBounds(0, 0, 669, 380);
-				panel.add(Main_scrollPane);
+				Tablepanel.add(Main_scrollPane);
 				
 						table = new JTable();
 						table.setModel(new DefaultTableModel(new Object[][] {},
@@ -246,7 +249,8 @@ public class MainGUI extends JFrame {
 						
 								// Sort the JTable
 								table.setAutoCreateRowSorter(true);
-											
+								
+								
 	}
 
 	public String getFirstName() {
