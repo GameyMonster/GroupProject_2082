@@ -145,6 +145,8 @@ public class LoginGUI {
 						menu.setUserName(stringOfUserName);
 						menu.setEmail(stringOfEmail);
 						menu.setDOB(stringOfDOB);
+						txtUser.setText("");
+						passwordField.setText("");
 						menu.setVisible(true);
 						break;
 					} else if (puname.equals("") && ppaswd.equals("")) {

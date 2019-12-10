@@ -128,7 +128,7 @@ public class AccountGUI extends JFrame {
 					}
 					textDOB.setText(backSpace);
 				}
-				if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' && textDOB.getText().length() <= 8) {
+				if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' && textDOB.getText().length() <= 7) {
 					textDOB.setEditable(true);
 				} else {
 					textDOB.setEditable(false);
@@ -165,7 +165,7 @@ public class AccountGUI extends JFrame {
 					}
 					txtPhone.setText(backSpace);
 				}
-				if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' && txtPhone.getText().length() <= 10) {
+				if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' && txtPhone.getText().length() <= 9) {
 					txtPhone.setEditable(true);
 				} else {
 					txtPhone.setEditable(false);

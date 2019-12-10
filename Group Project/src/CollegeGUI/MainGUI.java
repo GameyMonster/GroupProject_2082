@@ -85,7 +85,6 @@ public class MainGUI extends JFrame {
 		});
 		btnLogout.setBounds(1230, 485, 114, 23);
 		getContentPane().add(btnLogout);
-	
 		// Add Courses
 		JButton btnAddCourses = new JButton("Add Courses");
 		btnAddCourses.addActionListener(new ActionListener() {
